@@ -1,0 +1,18 @@
+Here are some useful software as you explore AutoASR and the data itself:
+
+AutoASR is on GitHub (updates coming soon): https://github.com/jjvanantwerp/Automated-ASR/
+
+For running AutoASR, you'll need Python3 as well as:
+     CD-Hit: https://github.com/weizhongli/cdhit
+     MAFFT: https://mafft.cbrc.jp/alignment/software/
+     IQ-Tree: http://www.iqtree.org/
+     The BioPython module: https://biopython.org/wiki/Download
+
+For viewing the results the following software are most useful:
+     FigTree: https://github.com/rambaut/figtree/releases 
+     AliView:  https://ormbunkar.se/aliview/
+
+
+The comment at the top of the code gives a brief description of where data are put during analysis, 
+but if you have any questions or difficulties, please let me know! I'd value the feedback of where 
+to make the user experience more frictionless. 
