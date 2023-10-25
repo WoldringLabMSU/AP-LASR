@@ -1,6 +1,5 @@
 
-**James VanAntwerp
-10-07-23**
+
 
 
 **AP-LASR: Automated Protein Libraries from Ancestral Sequence Reconstruction**
@@ -75,6 +74,12 @@ Ben Dolgikh and Patrick Finneran contributed some code for specific steps of the
 Mehrsa Mardikoraem contributed statistical evaluations of test conditions, as well as contributions to and editing of the manuscript and figures.
 Nathan Pascual made contributions to and editing of the manuscript and figures.
 Many thanks to all of them for their support in this project, and to my freinds and family for encouraging me through the long and sometimes difficult process that was the creation of AP-LASR.
+
+**Change Log**
+
+James VanAntwerp, 10-07-23, page semi-finalized.
+
+Nathan Pascual, 10-25-23, minor formatting edits and updates for Outgroup Functionality and "Alt-All" mode.
 
 
 **License:**
