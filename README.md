@@ -47,6 +47,7 @@ AP-LASR can run in one of four modes:
 The above line runs APLASR in ASR mode, pulling input sequences from the file ‘input.fasta’, and stores the output in a directory called “ASR_RUN_10_7_23”. It caps the final dataset to 3,000 sequences, and is running in an environment where “iqtree2” is the executable for IQ-Tree and “CDHIT” is the executable for CD-Hit.
 
 ## Options/Flags
+For the default `ASR` mode:
 
 `-i` 
 - specifies the name of the input Fasta file, or can take a raw protein sequence. This is the only mandatory input
@@ -73,15 +74,29 @@ The above line runs APLASR in ASR mode, pulling input sequences from the file �
 - allows users to specify the number of times the function "Post_MAFFT_Processing" iterates over the raw alignment to generate the final dataset. Each iteation will remove a large number of sequences, more if the different input sequecnes are dissimilar. Default is 2.
 
 `-t` 
--   specifies the new threshold, expressed as a decimal. 
+-   specifies the library generation threshold, expressed as a decimal. 
 
-`RemakeLibrareies`
-- mode will generate new combinatorial libraries from ancestral proteins of a previous ASR run with a specified threshold confidence. This will allow generation of a library with a different size than what was generated with the default threshold confidences. Specify the directory where the ASR results of interest are stored.
+`-o`, or `--outgroup`
+-  allows users to provide an outgroup via a FASTA file, which will be included in the final sequence alignment for tree rooting, etc.
+
+As briefly described above, there are three other modes for AP-LASR, with each having specific options.
+
+`RemakeLibraries`
+- This mode will generate new combinatorial libraries from ancestral proteins of a previous ASR run with a specified threshold confidence. This will allow generation of a library with a different size than what was generated with the default threshold confidences. Specify the directory where the ASR results of interest are stored.
+-  `RemakeLibraries`-specific options:
+    - specify the directory where the results of interest are stored with the `-n` flag.
+    - a new threshold may be defined with the `-t` option
+    - `-A` or `--AltAll` 
+        -  will make libraries in an "Alt-All" mode, which gives one highly mutated alternative sequence for each ancestor. No threshold should be specified if this mode is used.
 
 `MakeFigures` 
-- mode will generate figures from ASR data of a previous ASR run - specify the directory where the results of interest are stored.
+- This mode will generate figures from ASR data of a previous ASR run
+- specify the directory where the results of interest are stored with the `-n` flag.
 
-## Other Helpful Examples
+`Assist` 
+- This mode gives more detailed help than just `-h` would. 
+
+## Helpful Examples
  
 `python3 APLASR.py RemakeLibraries -n ASR_RUN_10_7_23 -t 0.085`
 
@@ -99,6 +114,10 @@ The above line runs APLASR in ASR mode, with the input sequence in the file “i
 `python3 APLASR.py ASR -i MRFPSIFTAVLFAASSALAAPVNTTTEDETAQIPAEAVIGYLDLEGDFDVAVLPFSNSTNNGLLFINTTIASIAAKEEGVSLDKREAEAWHWLQLKPGQPMYKREAEAEAWHWLQLKPGQPMYKREADAEAWHWLQLKPGQPMYKREADAEAWHWLQLKPGQPMY -n alpha_ASR`
   
 The above line runs APLASR in ASR mode, with the input sequence as the list of amino acids pasted directly into the command line (in this case, yeast mating factor alpha-1 from S. Cerevisiae, UniProt P01149). The directory name is specified as “alpha_ASR” and all other parameters are left default.
+
+`python3 APLASR.py ASR -i input.fasta -o outgroup.fasta`
+
+The above line runs APLASR in ASR mode, with the input sequence in the file “input.fasta” and an outgroup sepcified in "outgroup.fasta". All other parameters are default.
 
 # Helpful Tips
 
@@ -172,4 +191,4 @@ SOFTWARE.
 
 James VanAntwerp, 10-07-23, page semi-finalized.
 
-Nathan Pascual, 10-25-23, minor formatting edits and updates for Outgroup Functionality and "Alt-All" mode.
+Nathan Pascual, 10-26-23, minor formatting edits and updates for Outgroup Functionality and "Alt-All" mode.
