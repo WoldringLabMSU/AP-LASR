@@ -1,6 +1,6 @@
 # AP-LASR: Automated Protein Libraries from Ancestral Sequence Reconstruction
 
-This code is used to automate the curation of combinatorial protein libraries from an automated ancestral sequence reconstruction workflow. Given a protein of interest, AP-LASR will curate a dataset of modern homologs, conduct indel-aware ancestral sequence reconstruction, and generate combinatorial libraries from ancestral proteins. This is valuable as a means to generate a diverse library of highly functional, stable protein sequences in an automated, objective manner.
+AP-LASR automates the curation of combinatorial protein libraries from an automated ancestral sequence reconstruction workflow. Given a protein of interest, it will curate a dataset of modern homologs, conduct indel-aware ancestral sequence reconstruction, and generate combinatorial libraries from ancestral proteins. This is valuable as a means to generate a diverse library of highly functional, stable protein sequences in an automated, objective manner.
 
 For more information about the motivation behind AP-LASR, check out the pre-print: https://www.biorxiv.org/content/10.1101/2023.10.09.561537v1
 
@@ -33,6 +33,10 @@ AP-LASR can run in one of four modes:
 
     * **IQ-Tree:**  http://www.iqtree.org/#download
 
+    While not necessary to run AP-LASR, Matplotlib should be installed to generate figures.
+
+    * **(Optional)Matplotlib:** https://matplotlib.org/stable/users/getting_started/ 
+
 4. Once the proper modules are loaded, AP-LASR can be run from the command line as described in the following section of this README. 
 
 
@@ -42,9 +46,40 @@ AP-LASR can run in one of four modes:
 	
 The above line runs APLASR in ASR mode, pulling input sequences from the file ‘input.fasta’, and stores the output in a directory called “ASR_RUN_10_7_23”. It caps the final dataset to 3,000 sequences, and is running in an environment where “iqtree2” is the executable for IQ-Tree and “CDHIT” is the executable for CD-Hit.
 
-## Options
+## Options/Flags
 
-[Next Steps involve adding the total potential list of options from help]
+`-i` 
+- specifies the name of the input Fasta file, or can take a raw protein sequence. This is the only mandatory input
+
+`-n` 
+- specifies the name of the output directory. The default is "ASR".
+
+`-s` 
+- specifies the desired maximum size of the final dataset of modern homologs. This allows users some control over the time AP-LASR will take to run, and the detail/quality of the ASR. The default is 500.
+
+`-supplement` 
+- will turn on supplementation at the provided similarity cutoff (entered as a decimal). If you do turn on supplementation, there is not a default value but we reccomend users specify something between 0.7 and 0.85. 
+
+`-iqtree` 
+- allows users to specify an executable for IQTree other than the default ("iqtree").
+    
+`-cdhit`
+- allows users to specify an executable for CH-Hit other than the default ("cd-hit").
+
+`-mafft` 
+- allows users to specify an executable for MAFFT other than the default ("mafft").
+
+`-MSI` 
+- allows users to specify the number of times the function "Post_MAFFT_Processing" iterates over the raw alignment to generate the final dataset. Each iteation will remove a large number of sequences, more if the different input sequecnes are dissimilar. Default is 2.
+
+`-t` 
+-   specifies the new threshold, expressed as a decimal. 
+
+`RemakeLibrareies`
+- mode will generate new combinatorial libraries from ancestral proteins of a previous ASR run with a specified threshold confidence. This will allow generation of a library with a different size than what was generated with the default threshold confidences. Specify the directory where the ASR results of interest are stored.
+
+`MakeFigures` 
+- mode will generate figures from ASR data of a previous ASR run - specify the directory where the results of interest are stored.
 
 ## Other Helpful Examples
  
