@@ -2,7 +2,6 @@
 # This is a program that constructs rough estimates of ancestral sequence reconstruction from an amino acid sequence.
 # This program requires instalation of the Bioservieces module
 # Written by James VanAntwerp from September 2020 through May 2023 - contact  vanantj @ udel . edu
-# Written by Pattrick Finneran, Menten AI, Palo Alto, California, United States of America
 # Written for the Woldring Lab, Michigan State University in East Lansing,
 # Michigan, USA.
 
@@ -1019,8 +1018,8 @@ def Select_Ancestor_Nodes(dirname):
             Supports[ASRnodes[i][0]] = ((UFB_i, SHALRT_i))
             UFB_Supports.append(UFB_i)
             SHALRT_Supports.append(SHALRT_i)
-            if (SHALRT_i > 80) and (
-                    UFB_i > 95):  # If the SH-aLRT >80% and the ultrafast bootstraping is >95%
+            if (SHALRT_i > 50) and (
+                    UFB_i > 80):  # If the SH-aLRT >80% and the ultrafast bootstraping is >95%
                 # Record the name of the high-confidence nodes.
                 confident_nodes.append(ASRnodes[i][0])
         # This is nessecary because sometimes the info on a node is genuinely
